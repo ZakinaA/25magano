@@ -6,8 +6,9 @@ package test;
 
 import database.ConnexionBdd;
 import database.DaoCaserne;
-import database.DaoPompier;
 import java.sql.Connection;
+import model.Caserne;
+import model.Pompier;
 
 /**
  *
@@ -15,11 +16,21 @@ import java.sql.Connection;
  */
 public class TestDaoCaserne {
     
-      public static void main (String args[]){
+    public static void main (String args[]){
         
         Connection cnx = ConnexionBdd.ouvrirConnexion();
-        System.out.println ("nombre de casernes=" + DaoCaserne.getLesCasernes(cnx).size());
-           
+        System.out.println ("nombre de caserne=" + DaoCaserne.getLesCasernes(cnx).size());
+        
+        System.out.println ("La caserne 1 s'appelle =" + DaoCaserne.getCasernById(cnx,1).getNom());
+        
+        Caserne c = new Caserne();
+        c.setNom("CHAUVEL");
+        
+        c = DaoCaserne.addCaserne(cnx, c);
+        System.out.println("la nouvelle caserne a reçu l id = " + c.getId());
+        
+        
     }
     
 }
+

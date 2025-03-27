@@ -1,7 +1,7 @@
 <%-- 
-    Document   : lister_pompiers.jsp
-    Created on : 15 mars 2024, 16:50:49
-    Author     : zakina
+    Document   : listerCaserne
+    Created on : 27 mars 2025, 09:42:46
+    Author     : TS1SIO
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,38 +20,28 @@
         <title>APPLICATION DE GESTION SDIS CALVADOS</title>
     </head>
     <body>
-        <h1>Liste des pompiers du Calvados</h1>
+        <h1>Liste des caserne du Calvados</h1>
             <%
-                ArrayList<Pompier> lesPompiers = (ArrayList)request.getAttribute("pLesPompiers");
+                ArrayList<Caserne> lesCasernes = (ArrayList)request.getAttribute("cLesCasernes");
             %>
             <table>  
             <thead>
                 <tr>             
                     <th>id</th>
-                    <th>nom</th>
-                    <th>prenom</th>
-                    <th>caserne</th>                
+                    <th>nom</th>             
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <%
-                        for (Pompier p : lesPompiers)
+                        for (Caserne c : lesCasernes)
                         {              
                             out.println("<tr><td>");
-                            out.println(p.getId());
+                            out.println(c.getId());
                             out.println("</a></td>");
 
-                            out.println("<td><a href ='../ServletPompier/consulter?idPompier="+ p.getId()+ "'>");
-                            out.println(p.getNom());
-                            out.println("</td>");
-
-                            out.println("<td>");
-                            out.println(p.getPrenom());
-                            out.println("</td>");
-                           
-                            out.println("<td>");
-                            out.println(p.getUneCaserne().getNom());
+                            out.println("<td><a href ='../ServletCaserne/consulter?idCaserne="+ c.getId()+ "'>");
+                            out.println(c.getNom());
                             out.println("</td>");
                                
                         }

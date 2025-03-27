@@ -17,6 +17,10 @@ import model.Pompier;
  * @author zakina
  */
 public class DaoPompier {
+
+    public static Object getCaserneById(Connection cnx, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     Connection cnx;
     static PreparedStatement requeteSql = null;
