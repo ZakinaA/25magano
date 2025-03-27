@@ -4,7 +4,7 @@
     Author     : TS1SIO
 --%>
 <%@ page import="model.Intervention" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,30 +13,32 @@
     </head>
     <body>
         <%
-            Intervention i = (Intervention)request.getAttribute("pUneIntervention");
+            Intervention i = (Intervention) request.getAttribute("pUneIntervention");
         %>
-        <h1>Voici l'intervention numéro <% i.getId();%> :</h1>
+        <h1>Voici l'intervention numéro <%= i.getId() %> :</h1>
         <table>
             <tr>
-                <td>ID : </td><td><% i.getId();%></td>
+                <td>ID : </td><td><%= i.getId() %></td>
             </tr>
             <tr>
-                <td>Lieu : </td><td><% i.getLieu();%></td>
+                <td>Lieu : </td><td><%= i.getLieu() %></td>
             </tr>
             <tr>
-                <td>Date d'intervention : </td><td><% i.getDateInter();%></td>
+                <td>Date d'intervention : </td><td><%= i.getDateInter() %></td>
             </tr>
             <tr>
-                <td>Heure d'appel : </td><td><% i.getHeureAppel();%></td>
+                <td>Heure d'appel : </td><td><%= i.getHeureAppel() %></td>
             </tr>
             <tr>
-                <td>Heure d'arrivée : </td><td><% i.getHeureArrive();%></td>
+                <td>Heure d'arrivée : </td><td><%= i.getHeureArrive() %></td>
             </tr>
             <tr>
-                <td>Durée : </td><td><% i.getDuree();%></td>
+                <td>Durée : </td><td><%= i.getDuree() %></td>
             </tr>
             <tr>
-                <td>Type de Situation : </td><td><% i.getSituation().getType();%></td>
+                <td>Type de Situation : </td><td>
+                    <%= (i.getSituation() != null ? i.getSituation().getType() : "Non défini") %>
+                </td>
             </tr>
         </table>
     </body>

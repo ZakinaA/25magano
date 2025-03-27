@@ -57,7 +57,7 @@ public class Intervention {
     }
     
     public String getHeureArrive() {
-        return heureAppel;
+        return heureArrive;
     }
 
     public void setHeureArrive(String heureArrive) {
