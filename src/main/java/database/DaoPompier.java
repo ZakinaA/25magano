@@ -45,6 +45,7 @@ public class DaoPompier {
                     p.setPro_dernierIndice(resultatRequete.getString("p_pro_dernierIndice"));
                     p.setPro_dateObtentionIndice(resultatRequete.getDate("p_pro_dateObtentionIndice"));
                     p.setVol_professionLibelle(resultatRequete.getString("p_vol_professionLibelle"));
+                    p.setVol_professionVille(resultatRequete.getString("p_vol_professionVille"));
                 Caserne c = new Caserne();
                     c.setId(resultatRequete.getInt("c_id"));
                     c.setNom(resultatRequete.getString("c_nom"));
@@ -93,6 +94,7 @@ public class DaoPompier {
                     p.setPro_dernierIndice(resultatRequete.getString("p_pro_dernierIndice"));
                     p.setPro_dateObtentionIndice(resultatRequete.getDate("p_pro_dateObtentionIndice"));
                     p.setVol_professionLibelle(resultatRequete.getString("p_vol_professionLibelle"));
+                    p.setVol_professionVille(resultatRequete.getString("p_vol_professionVille"));
                 Caserne c = new Caserne();
                     c.setId(resultatRequete.getInt("c_id"));
                     c.setNom(resultatRequete.getString("c_nom"));
