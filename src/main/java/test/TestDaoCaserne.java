@@ -20,15 +20,11 @@ public class TestDaoCaserne {
         
         Connection cnx = ConnexionBdd.ouvrirConnexion();
         System.out.println ("nombre de caserne=" + DaoCaserne.getLesCasernes(cnx).size());
-        
-        System.out.println ("La caserne 1 s'appelle =" + DaoCaserne.getCasernById(cnx,1).getNom());
+       
+        System.out.println ("La caserne 1 s'appelle =" + DaoCaserne.getCasernById(cnx,1).getVille() +' '+ DaoCaserne.getCasernById(cnx,1).getAdresse() +' '+ DaoCaserne.getCasernById(cnx,1).getCpos());
         
         Caserne c = new Caserne();
-        c.setNom("CHAUVEL");
-        
-        c = DaoCaserne.addCaserne(cnx, c);
-        System.out.println("la nouvelle caserne a reçu l id = " + c.getId());
-        
+        c.setVille("CHAUVEL");
         
     }
     

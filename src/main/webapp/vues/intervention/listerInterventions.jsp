@@ -1,13 +1,12 @@
 <%-- 
-    Document   : lister_pompiers.jsp
-    Created on : 15 mars 2024, 16:50:49
-    Author     : zakina
+    Document   : listerInterventions
+    Created on : 27 mars 2025, 09:39:32
+    Author     : TS1SIO
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="model.Pompier"%>
-<%@page import="model.Caserne"%>
+<%@page import="model.Intervention"%>
+<%@page import="model.Situation"%>
 <%@page import="java.util.ArrayList"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,39 +19,37 @@
         <title>APPLICATION DE GESTION SDIS CALVADOS</title>
     </head>
     <body>
-        <h1>Liste des pompiers du Calvados</h1>
+        <h1>Liste des interventions du Calvados</h1>
             <%
-                ArrayList<Pompier> lesPompiers = (ArrayList)request.getAttribute("pLesPompiers");
+                ArrayList<Intervention> lesInterventions = (ArrayList)request.getAttribute("pLesInterventions");
             %>
             <table>  
             <thead>
                 <tr>             
-                    <th>id</th>
-                    <th>nom</th>
-                    <th>prenom</th>
-                    <th>caserne</th>                
+                    <th>Id</th>
+                    <th>Lieu</th>
+                    <th>Date de l'intervention</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <%
-                        for (Pompier p : lesPompiers)
+                        for (Intervention i : lesInterventions)
                         {              
-                            out.println("<tr><td>");
-                            out.println(p.getId());
+                            out.println("<tr><td><a href ='../ServletIntervention/consulter?idIntervention="+ i.getId()+ "'>");
+                            out.println(i.getId());
                             out.println("</a></td>");
 
-                            out.println("<td><a href ='../ServletPompier/consulter?idPompier="+ p.getId()+ "'>");
-                            out.println(p.getNom());
+                            out.println("<td>");
+                            out.println(i.getLieu());
+                            out.println("</td>");
+                            
+                            out.println("<td>");
+                            out.println(i.getDateInter());
                             out.println("</td>");
 
-                            out.println("<td>");
-                            out.println(p.getPrenom());
-                            out.println("</td>");
-                           
-                            out.println("<td>");
-                            out.println(p.getUneCaserne().getVille());
-                            out.println("</td>");
+                            
                                
                         }
                     %>

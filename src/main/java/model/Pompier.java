@@ -15,6 +15,7 @@ public class Pompier {
     private String nom;
     private String prenom ;
     private Caserne uneCaserne ;
+    private Grade unGrade ;
 
     public Pompier() {
     }
@@ -58,7 +59,5 @@ public class Pompier {
     public void setUneCaserne(Caserne uneCaserne) {
         this.uneCaserne = uneCaserne;
     }
-    
-    
-    
+
 }

@@ -30,9 +30,9 @@ public class DaoPompier {
         
         ArrayList<Pompier> lesPompiers = new ArrayList<Pompier>();
         try{
-            requeteSql = cnx.prepareStatement("select pompier.id as p_id, pompier.nom as p_nom, pompier.prenom as p_prenom, c.id as c_id, c.nom as c_nom " +
+            requeteSql = cnx.prepareStatement("select pompier.id as p_id, pompier.nom as p_nom, pompier.prenom as p_prenom, c.id as c_id, c.ville as c_ville, c.cpos as c_cpos, c.adresse as c_adresse " +
                          " from pompier inner join caserne c " +
-                         " on pompier.caserne_id = c.id ");
+                         " on pompier.caserne_id = c.id ;");
             resultatRequete = requeteSql.executeQuery();
             
             while (resultatRequete.next()){
@@ -43,7 +43,9 @@ public class DaoPompier {
                     p.setPrenom(resultatRequete.getString("p_prenom"));
                 Caserne c = new Caserne();
                     c.setId(resultatRequete.getInt("c_id"));
-                    c.setNom(resultatRequete.getString("c_nom"));
+                    c.setVille(resultatRequete.getString("c_Ville"));
+                    c.setCpos(resultatRequete.getString("c_cpos"));
+                    c.setAdresse(resultatRequete.getString("c_Adresse"));
                 
                 p.setUneCaserne(c);
                 
@@ -62,7 +64,7 @@ public class DaoPompier {
         
         Pompier p = null ;
         try{
-            requeteSql = cnx.prepareStatement("select pompier.id as p_id, pompier.nom as p_nom, pompier.prenom as p_prenom, c.id as c_id, c.nom as c_nom " +
+            requeteSql = cnx.prepareStatement("select pompier.id as p_id, pompier.nom as p_nom, pompier.prenom as p_prenom, c.id as c_id, c.ville as c_ville, c.cpos as c_cpos, c.adresse as c_adresse " +
                          " from pompier inner join caserne c " +
                          " on pompier.caserne_id = c.id "+
                          " where pompier.id= ? ");
@@ -77,7 +79,9 @@ public class DaoPompier {
                     p.setPrenom(resultatRequete.getString("p_prenom"));
                 Caserne c = new Caserne();
                     c.setId(resultatRequete.getInt("c_id"));
-                    c.setNom(resultatRequete.getString("c_nom"));
+                    c.setVille(resultatRequete.getString("c_ville"));
+                    c.setCpos(resultatRequete.getString("c_cpos"));
+                    c.setAdresse(resultatRequete.getString("c_adresse"));
                 
                 p.setUneCaserne(c);
                 

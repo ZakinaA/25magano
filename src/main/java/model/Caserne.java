@@ -13,7 +13,9 @@ import java.util.ArrayList;
 public class Caserne {
     
     private int id;
-    private String nom ;
+    private String ville ;
+    private String cpos ;
+    private String adresse;
     private ArrayList<Pompier> lesPompiers ;
 
     public Caserne() {
@@ -22,7 +24,6 @@ public class Caserne {
     public Caserne(int id) {
         this.id = id;
     }
-
     
     public int getId() {
         return id;
@@ -32,13 +33,31 @@ public class Caserne {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getVille() {
+        return ville;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public String getCpos() {
+        return cpos;
     }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public void setCpos(String cpos) {
+        this.cpos = cpos;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+
 
     public ArrayList<Pompier> getLesPompiers() {
         return lesPompiers;

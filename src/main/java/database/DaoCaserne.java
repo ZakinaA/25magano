@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package database;
-
+import static database.DaoPompier.requeteSql;
+import static database.DaoPompier.resultatRequete;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,14 +31,16 @@ public class DaoCaserne {
         
         ArrayList<Caserne> lesCasernes = new ArrayList<Caserne>();
         try{
-            requeteSql = cnx.prepareStatement("select caserne.id as c_id, caserne.nom as c_nom from caserne; ");
+            requeteSql = cnx.prepareStatement("select caserne.id as c_id, caserne.ville as c_ville, caserne.cpos as c_cpos, caserne.adresse as c_adresse from caserne; ");
             resultatRequete = requeteSql.executeQuery();
             
             while (resultatRequete.next()){
                 
                 Caserne c = new Caserne();
                     c.setId(resultatRequete.getInt("c_id"));
-                    c.setNom(resultatRequete.getString("c_nom"));
+                    c.setVille(resultatRequete.getString("c_ville"));
+                    c.setCpos(resultatRequete.getString("c_Cpos"));
+                    c.setAdresse(resultatRequete.getString("c_Adresse"));
                 
                 lesCasernes.add(c);
             }
@@ -54,7 +57,7 @@ public class DaoCaserne {
         
         Caserne c = null ;
         try{
-            requeteSql = cnx.prepareStatement("select caserne.id as c_id, caserne.nom as c_nom from caserne"+
+            requeteSql = cnx.prepareStatement("select caserne.id as c_id, caserne.ville as c_ville, caserne.cpos as c_cpos, caserne.adresse as c_adresse from caserne"+
                          " where caserne.id= ? ;");
             requeteSql.setInt(1, idCaserne);
             resultatRequete = requeteSql.executeQuery();
@@ -62,8 +65,10 @@ public class DaoCaserne {
             if (resultatRequete.next()){
                 
                     c = new Caserne();
-                    c.setId(resultatRequete.getInt("c_id"));
-                    c.setNom(resultatRequete.getString("c_nom"));
+                        c.setId(resultatRequete.getInt("c_id"));
+                        c.setVille(resultatRequete.getString("c_ville"));
+                        c.setCpos(resultatRequete.getString("c_Cpos"));
+                        c.setAdresse(resultatRequete.getString("c_Adresse"));
                 
                 
             }
@@ -74,41 +79,6 @@ public class DaoCaserne {
             System.out.println("La requête de getCaserneById  a généré une erreur");
         }
         return c ;
-    }
-    
-    
-    public static Caserne addCaserne(Connection connection, Caserne c){      
-        int idGenere = -1;
-        try
-        {
-            //preparation de la requete
-            // id (clé primaire de la table client) est en auto_increment,donc on ne renseigne pas cette valeur
-            // la paramètre RETURN_GENERATED_KEYS est ajouté à la requête afin de pouvoir récupérer l'id généré par la bdd (voir ci-dessous)
-            // supprimer ce paramètre en cas de requête sans auto_increment.
-            requeteSql=connection.prepareStatement("INSERT INTO Caserne ( nom )\n" +
-                    "VALUES (?)", requeteSql.RETURN_GENERATED_KEYS );
-            requeteSql.setString(1, c.getNom());
-
-           /* Exécution de la requête */
-            requeteSql.executeUpdate();
-            
-             // Récupération de id auto-généré par la bdd dans la table client
-            resultatRequete = requeteSql.getGeneratedKeys();
-            while ( resultatRequete.next() ) {
-                idGenere = resultatRequete.getInt( 1 );
-                c.setId(idGenere);
-                
-                c = DaoCaserne.getCasernById(connection, c.getId());
-            }
-            
-         
-        }   
-        catch (SQLException e) 
-        {
-            e.printStackTrace();
-            //out.println("Erreur lors de l’établissement de la connexion");
-        }
-        return c ;    
     }
     
 }

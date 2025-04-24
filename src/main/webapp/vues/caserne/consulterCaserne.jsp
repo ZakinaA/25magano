@@ -5,13 +5,26 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.Caserne"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>SDIS WEB</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%
+            Caserne c = (Caserne)request.getAttribute("cCaserne");
+        %>
+        <h1>Bienvenue à la caserne de<%  out.println(c.getVille());%></h1>
+        <table>
+            <tr>
+                <td>Lieux : </td><td><%  out.println(c.getVille()+' '+c.getAdresse()+' '+c.getCpos());%></td>
+            </tr>
+            <tr>
+                <td>Caserne Id : </td><td><%  out.println(c.getId());%></td>
+            </tr>
+        </table>
     </body>
 </html>
+

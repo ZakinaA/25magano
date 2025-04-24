@@ -22,7 +22,7 @@
                 <td>Numero Bip : </td><td>bip bip</td>
             </tr>
             <tr>
-                <td>Caserne : </td><td><%  out.println(p.getUneCaserne().getNom());%></td>
+                <td>Caserne : </td><td><%  out.println(p.getUneCaserne().getAdresse() + ' ' + p.getUneCaserne().getCpos() + ' ' + p.getUneCaserne().getVille());%></td>
             </tr>
         </table>
     </body>

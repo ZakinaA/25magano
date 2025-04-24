@@ -59,31 +59,6 @@ public class FormCaserne {
             return valeur.trim();
         }   
     }
-    
-    
-    public Caserne ajouterCaserne( HttpServletRequest request ) {
-        
-        Caserne c  = new Caserne();
-        
-        String nom = getDataForm( request, "nom" );
-        int idCaserne = Integer.parseInt((String)getDataForm( request, "idCaserne" ));
-      
-        try {
-             validationNom( nom );
-        } catch ( Exception e ) {
-            setErreur( "nom", e.getMessage() );
-        }
-        c.setNom(nom);
 
-        if ( erreurs.isEmpty() ) {
-            resultat = "Succès de l'ajout.";
-        } else {
-            resultat = "Échec de l'ajout.";
-        }
-        
-        return c ;
-    }
-    
-    
 }
 

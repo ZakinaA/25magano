@@ -104,11 +104,7 @@ public class ServletPompier extends HttpServlet {
             ArrayList<Pompier> lesPompiers = DaoPompier.getLesPompiers(cnx);
             request.setAttribute("pLesPompier", lesPompiers);
             this.getServletContext().getRequestDispatcher("/vues/pompier/ajouterPompier.jsp" ).forward( request, response );
-        }
-        
-        
-        
-        
+        } 
     }
 
     /**
@@ -149,13 +145,9 @@ public class ServletPompier extends HttpServlet {
         { 
             // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
             ArrayList<Pompier> lesPompiers = DaoPompier.getLesPompiers(cnx);
-            request.setAttribute("pLesCasernes", lesPompiers);
+            request.setAttribute("pLesPompiers", lesPompiers);
             this.getServletContext().getRequestDispatcher("/vues/pompier/ajouterPompier.jsp" ).forward( request, response );
         }
-        
-        
-        
-        
         
     }
 

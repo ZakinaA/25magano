@@ -41,7 +41,7 @@
                             out.println("</a></td>");
 
                             out.println("<td><a href ='../ServletCaserne/consulter?idCaserne="+ c.getId()+ "'>");
-                            out.println(c.getNom());
+                            out.println(c.getVille());
                             out.println("</td>");
                                
                         }
