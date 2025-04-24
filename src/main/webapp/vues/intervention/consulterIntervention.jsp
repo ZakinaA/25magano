@@ -15,7 +15,7 @@
         <%
             Intervention i = (Intervention) request.getAttribute("pUneIntervention");
         %>
-        <h1>Voici l'intervention numéro <%= i.getId() %> :</h1>
+        <h1>Voici l'intervention numéro <% i.getId(); %> :</h1>
         <table>
             <tr>
                 <td>ID : </td><td><%= i.getId() %></td>

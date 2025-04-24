@@ -13,7 +13,10 @@
         <servlet-name>ServletIntervention</servlet-name>
         <servlet-class>servlet.ServletIntervention</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>ServletEngin</servlet-name>
+        <servlet-class>servlet.ServletEngin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPompier</servlet-name>
         <url-pattern>/ServletPompier/lister</url-pattern>
@@ -33,6 +36,14 @@
     <servlet-mapping>
         <servlet-name>ServletIntervention</servlet-name>
         <url-pattern>/ServletIntervention/consulter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEngin</servlet-name>
+        <url-pattern>/ServletEngin/lister</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEngin</servlet-name>
+        <url-pattern>/ServletEngin/consulter</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
