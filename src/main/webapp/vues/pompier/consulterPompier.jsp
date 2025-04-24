@@ -19,7 +19,31 @@
         <h1>Bienvenue <%  out.println(p.getPrenom());%>  <%  out.println(p.getNom());%></h1>
         <table>
             <tr>
+                <td>Date de naissance : </td><td><%  out.println(p.getDateNaissance());%></td>
+            </tr>
+            <tr>
                 <td>Numero Bip : </td><td>bip bip</td>
+            </tr>
+            <tr>
+                <td>Type de Pompier : </td><td><%  out.println(p.getTypePompier());%></td>
+            </tr>
+            <tr>
+                <td>Dernier Indice : </td><td><%  out.println(p.getPro_dernierIndice());%></td>
+            </tr>
+            <tr>
+                <td>Date d'Obtention du Dernier Indice : </td><td><%  out.println(p.getPro_dateObtentionIndice());%></td>
+            </tr>
+            <tr>
+                <td>Nom de Profession : </td><td><%  out.println(p.getVol_professionLibelle());%></td>
+            </tr>
+            <tr>
+                <td>Ville de la Profession : </td><td><%  out.println(p.getVol_professionVille());%></td>
+            </tr>
+            <tr>
+                <td>Fonction : </td><td><%  out.println(p.getUneFonction().getLibelle());%></td>
+            </tr>
+            <tr>
+                <td>Grade : </td><td><%  out.println(p.getUnGrade().getLibelle());%></td>
             </tr>
             <tr>
                 <td>Caserne : </td><td><%  out.println(p.getUneCaserne().getNom());%></td>

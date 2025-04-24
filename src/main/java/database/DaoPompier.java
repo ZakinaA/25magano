@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Caserne;
 import model.Pompier;
+import model.Fonction;
+import model.Grade;
 
 /**
  *
@@ -26,9 +28,10 @@ public class DaoPompier {
         
         ArrayList<Pompier> lesPompiers = new ArrayList<Pompier>();
         try{
-            requeteSql = cnx.prepareStatement("select pompier.id as p_id, pompier.nom as p_nom, pompier.prenom as p_prenom, c.id as c_id, c.nom as c_nom " +
-                         " from pompier inner join caserne c " +
-                         " on pompier.caserne_id = c.id ");
+            requeteSql = cnx.prepareStatement("select pompier.id as p_id, pompier.nom as p_nom, pompier.prenom as p_prenom, pompier.dateNaissance as p_dateNaissance, pompier.typePompier as p_typePompier, pompier.pro_dernierIndice as p_pro_dernierIndice, pompier.pro_dateObtentionIndice as p_pro_dateObtentionIndice, pompier.vol_professionLibelle as p_vol_professionLibelle, pompier.vol_professionVille as p_vol_professionVille, f.id as f_id, f.code as f_code, f.libelle as f_libelle, g.id as g_id, g.libelle as g_libelle, c.id as c_id, c.nom as c_nom " +
+                         " from pompier inner join caserne c on pompier.caserne_id = c.id " + 
+                         " inner join fonction f on pompier.fonction_id = f.id " +
+                         " inner join grade g on pompier.grade_id = g.id");
             resultatRequete = requeteSql.executeQuery();
             
             while (resultatRequete.next()){
@@ -37,11 +40,24 @@ public class DaoPompier {
                     p.setId(resultatRequete.getInt("p_id"));
                     p.setNom(resultatRequete.getString("p_nom"));
                     p.setPrenom(resultatRequete.getString("p_prenom"));
+                    p.setDateNaissance(resultatRequete.getDate("p_dateNaissance"));
+                    p.setTypePompier(resultatRequete.getString("p_typePompier"));
+                    p.setPro_dernierIndice(resultatRequete.getString("p_pro_dernierIndice"));
+                    p.setPro_dateObtentionIndice(resultatRequete.getDate("p_pro_dateObtentionIndice"));
+                    p.setVol_professionLibelle(resultatRequete.getString("p_vol_professionLibelle"));
                 Caserne c = new Caserne();
                     c.setId(resultatRequete.getInt("c_id"));
                     c.setNom(resultatRequete.getString("c_nom"));
-                
                 p.setUneCaserne(c);
+                Fonction f = new Fonction();
+                    f.setId(resultatRequete.getInt("f_id"));
+                    f.setCode(resultatRequete.getString("f_code"));
+                    f.setLibelle(resultatRequete.getString("f_libelle"));
+                p.setUneFonction(f);
+                Grade g = new Grade();
+                    g.setId(resultatRequete.getInt("g_id"));
+                    g.setLibelle(resultatRequete.getString("g_libelle"));
+                p.setUnGrade(g);
                 
                 lesPompiers.add(p);
             }
@@ -58,9 +74,10 @@ public class DaoPompier {
         
         Pompier p = null ;
         try{
-            requeteSql = cnx.prepareStatement("select pompier.id as p_id, pompier.nom as p_nom, pompier.prenom as p_prenom, c.id as c_id, c.nom as c_nom " +
-                         " from pompier inner join caserne c " +
-                         " on pompier.caserne_id = c.id "+
+            requeteSql = cnx.prepareStatement("select pompier.id as p_id, pompier.nom as p_nom, pompier.prenom as p_prenom, pompier.dateNaissance as p_dateNaissance, pompier.typePompier as p_typePompier, pompier.pro_dernierIndice as p_pro_dernierIndice, pompier.pro_dateObtentionIndice as p_pro_dateObtentionIndice, pompier.vol_professionLibelle as p_vol_professionLibelle, pompier.vol_professionVille as p_vol_professionVille, f.id as f_id, f.code as f_code, f.libelle as f_libelle, g.id as g_id, g.libelle as g_libelle, c.id as c_id, c.nom as c_nom " +
+                         " from pompier inner join caserne c on pompier.caserne_id = c.id " + 
+                         " inner join fonction f on pompier.fonction_id = f.id " +
+                         " inner join grade g on pompier.grade_id = g.id "+
                          " where pompier.id= ? ");
             requeteSql.setInt(1, idPompier);
             resultatRequete = requeteSql.executeQuery();
@@ -71,11 +88,24 @@ public class DaoPompier {
                     p.setId(resultatRequete.getInt("p_id"));
                     p.setNom(resultatRequete.getString("p_nom"));
                     p.setPrenom(resultatRequete.getString("p_prenom"));
+                    p.setDateNaissance(resultatRequete.getDate("p_dateNaissance"));
+                    p.setTypePompier(resultatRequete.getString("p_typePompier"));
+                    p.setPro_dernierIndice(resultatRequete.getString("p_pro_dernierIndice"));
+                    p.setPro_dateObtentionIndice(resultatRequete.getDate("p_pro_dateObtentionIndice"));
+                    p.setVol_professionLibelle(resultatRequete.getString("p_vol_professionLibelle"));
                 Caserne c = new Caserne();
                     c.setId(resultatRequete.getInt("c_id"));
                     c.setNom(resultatRequete.getString("c_nom"));
-                
                 p.setUneCaserne(c);
+                Fonction f = new Fonction();
+                    f.setId(resultatRequete.getInt("f_id"));
+                    f.setCode(resultatRequete.getString("f_code"));
+                    f.setLibelle(resultatRequete.getString("f_libelle"));
+                p.setUneFonction(f);
+                Grade g = new Grade();
+                    g.setId(resultatRequete.getInt("g_id"));
+                    g.setLibelle(resultatRequete.getString("g_libelle"));
+                p.setUnGrade(g);
                 
                 
             }
